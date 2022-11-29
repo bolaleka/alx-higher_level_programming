@@ -18,4 +18,5 @@ elif n < 0:
         print("and is less than 6 and not 0")
     elif int(repr(n)[-1]) == 0:
         print("and is 0")
-	   
+elif n == 0:
+    print("Last digit of 0 is 0 and is 0")	   
