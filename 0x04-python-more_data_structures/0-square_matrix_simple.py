@@ -1,5 +1,5 @@
-#!/usr/bin/pytho3
+#!/usr/bin/python3
 
 def square_matrix_simple(matrix=[]):
-    res = [[x ** 2 for x in row] for row in matrix]
+    res = list(map(lambda i: list(map(lambda j: j * j, i)), matrix))
     return res
