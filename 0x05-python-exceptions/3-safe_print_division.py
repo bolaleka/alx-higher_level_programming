@@ -4,13 +4,8 @@ def safe_print_division(a, b):
     res = 0
     try:
         res = a / b
-    except:
-        pass
+    except (ZeroDivisionError, TypeError):
+        res = None
     finally:
-        if res != 0:
-            print("Inside result: {}".format(res))
-        else:
-            print("Inside result: None")
-    if res != 0:
-        return res
-    return "None"
+        print("Inside result: {}".format(res))
+    return res
