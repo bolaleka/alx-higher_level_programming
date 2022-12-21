@@ -4,8 +4,9 @@
 
 class Square:
     """Define __init__ to instantiate a private
-       instance attribute: size"""
-    
+       instance attribute: size
+    """
+
     def __init__(self, size=0):
         if int(size) >= 0 and isinstance(size, int) == True:
             self.__size = size
