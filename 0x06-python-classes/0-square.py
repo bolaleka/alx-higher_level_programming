@@ -6,8 +6,8 @@
 
 class Square:
 
-
     """Do nothing
 
     """
+
     pass
