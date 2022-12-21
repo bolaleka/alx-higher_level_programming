@@ -5,6 +5,8 @@
 """
 
 class Square:
+
+
     """Do nothing
 
     """
