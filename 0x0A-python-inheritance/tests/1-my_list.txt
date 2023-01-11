@@ -1,44 +1,64 @@
-The ``Print Sorted List`` module
-================================
+#Doctest for ../1-my_list.py
 
-First import ``MyList`` from the ``1-my_list`` module:
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> type(my_list)
+<class '1-my_list.MyList'>
 
-    >>> MyList = __import__("1-my_list").MyList
+>>> print(my_list)
+[]
 
-Now use it:
+>>> my_list = MyList([1, 2, 3])
+>>> print(my_list)
+[1, 2, 3]
 
-    >>> a = MyList()
-    >>> a
-    []
 
-    >>> a.append(1)
-    >>> a
-    [1]
+>>> my_list2 = MyList([8, 5, 3, 1])
+>>> print(my_list2)
+[8, 5, 3, 1]
+>>> my_list2.print_sorted()
+[1, 3, 5, 8]
 
-    >>> a.append(4)
-    >>> a.append(3)
-    >>> a
-    [1, 4, 3]
+>>> my_list2 = MyList([])
+>>> my_list2.print_sorted()
+[]
 
-    >>> a.print_sorted()
-    [1, 3, 4]
+>>> my_list = MyList(None)
+Traceback (most recent call last):
+TypeError: 'NoneType' object is not iterable
 
-    >>> a.append("b")
-    >>> a
-    [1, 4, 3, 'b']
+>>> my_list = MyList(['Hello', 'It', 'Me'])
+>>> my_list.print_sorted()
+['Hello', 'It', 'Me']
 
-    >>> a.print_sorted()
-    Traceback (most recent call last):
-        ...
-    TypeError: unorderable types: str() < int()
+>>> my_list.pop()
+'Me'
+>>> print(my_list)
+['Hello', 'It']
 
-    >>> b = MyList()
-    >>> b.append(4)
-    >>> b.append(-2)
-    >>> b.append(0)
-    >>> b.append(3)
-    >>> b
-    [4, -2, 0, 3]
+>>> my_list[0] = 'string'
+>>> print(my_list)
+['string', 'It']
 
-    >>> b.print_sorted()
-    [-2, 0, 3, 4]
+>>> my_list = MyList([1, 2, 'Jacob'])
+>>> print(my_list)
+[1, 2, 'Jacob']
+
+>>> my_list2 = MyList([1, 'hey', 'print', 7])
+>>> my_list2.print_sorted()
+Traceback (most recent call last):
+    ...
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3, 5]
