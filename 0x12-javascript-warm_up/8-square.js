@@ -3,11 +3,7 @@
 const num = parseInt(process.argv[2]);
 let arr = '';
 
-if (num <= 0) {
-  console.log();
-}
-
-if (/\d/.test(num) && process.argv[2] !== undefined) {
+if (/\d/.test(num) && process.argv[2] !== undefined && num > 0) {
   for (let i = 0; i < num; i++) {
     for (let j = 0; j < num; j++) {
       arr += 'x';
@@ -17,6 +13,6 @@ if (/\d/.test(num) && process.argv[2] !== undefined) {
     }
   }
   console.log(arr);
-} else {
+} else if (process.argv.length === 2 || !(/\d/.test(num))) {
   console.log('Missing size');
 }
