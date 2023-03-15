@@ -3,10 +3,10 @@
 const num = parseInt(process.argv[2]);
 let arr = '';
 
-if (/\d/.test(num) && process.argv[2] !== undefined && num > 0) {
+iif (/\d/.test(num) && process.argv[2] !== undefined && num > 0) {
   for (let i = 0; i < num; i++) {
     for (let j = 0; j < num; j++) {
-      arr += 'x';
+      arr += 'X';
     }
     if (i !== num - 1) {
       arr += '\n';
