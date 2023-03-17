@@ -1,11 +1,8 @@
 #!/usr/bin/node
 
-function print () {
-  return ('C is fun');
-}
-const callMeMoby = (x, print) => {
+const callMeMoby = (x, p) => {
   for (let i = 0; i < x; i++) {
-    print();
+    p('C is fun');
   }
 };
 
