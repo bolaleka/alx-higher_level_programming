@@ -11,6 +11,6 @@ if (args.length <= 3) {
     arr.push(args[j]);
     j++;
   }
-  arr.sort();
+  arr.sort(function (a, b) { return a - b; });
   console.log(arr[arr.length - 2]);
 }
