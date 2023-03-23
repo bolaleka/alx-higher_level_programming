@@ -2,23 +2,19 @@
 """script that lists all states from the database hbtn_0e_0_usa"""
 
 import MySQLdb
+import sys
 
-db = MySQLdb.connect(user='root', passwd='root', db='hbtn_0e_0_usa')
+db = MySQLdb.connect(user=sys.argv[1],
+                     passwd=sys.argv[2],
+                     db=sys.argv[3],
+                     host='localhost',
+                     port=3306,
+                     charset="utf8")
 cur = db.cursor()
 
-fullLine = ''
-for line in open('0-select_states.sql'):
-    tmpLine = line.strip()
-
-    if tmpLine[0] == '#' or tmpLine[0] == '-':
-        continue
-    fullLine += line
-my_list = [x + ';' for x in fullLine.split(';') if x]
-for item in range(len(my_list) - 1):
-    cur.execute(my_list[item])
-cur.execute("SELECT * FROM states")
+cur.execute("SELECT * FROM states ORDER BY id ASC")
 rows = cur.fetchall()
-for j in range(len(my_list)):
-    print(rows[j])
+for row in rows:
+    print(row)
 cur.close()
 db.close()
