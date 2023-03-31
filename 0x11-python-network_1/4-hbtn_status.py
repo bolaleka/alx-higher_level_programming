@@ -4,10 +4,7 @@
 import requests
 
 if __name__ == '__main__':
-    url = "https://alx-intranet.hbtn.io/status"
-    response = requests.get(url)
-
-    content = response.json()
+    response = requests.get('https://alx-intranet.hbtn.io/status')
     print("Body response:")
-    print("\t- type: {}".format(content["name"]))
-    print("\t- content: {}".format(content["status"]))
+    print("\t- type: {}".format("<class 'str'>"))
+    print("\t- content: {}".format(response.text))
