@@ -1,41 +1,27 @@
 #!/usr/bin/node
-// File: starwars_movie_characters.js
-
 const request = require('request');
 
-const MOVIE_ID = process.argv[2];
-const SWAPI_BASE_URL = 'https://swapi.dev/api/';
+const movieId = process.argv[2];
 
-request(SWAPI_BASE_URL + 'films/' + MOVIE_ID, function (error, response, body) {
-  if (error) {
-    console.error(error);
-    return;
-  }
+request(`https://swapi.dev/api/films/${movieId}/`, function (error, response, body) {
+  if (error) throw error;
 
-  const film = JSON.parse(body);
-  const charactersUrls = film.characters;
-  const characterNames = [];
+  const charactersUrls = JSON.parse(body).characters;
 
-  function fetchCharacterName (characterUrl) {
+  const getCharacterName = (url) => {
     return new Promise((resolve, reject) => {
-      request(characterUrl, function (error, response, body) {
-        if (error) {
-          reject(error);
-          return;
-        }
-
-        const character = JSON.parse(body);
-        characterNames.push(character.name);
-        resolve();
+      request(url, function (error, response, body) {
+        if (error) reject(error);
+        resolve(JSON.parse(body).name);
       });
     });
-  }
+  };
 
-  Promise.all(charactersUrls.map(fetchCharacterName))
-    .then(() => {
-      characterNames.forEach(name => console.log(name));
+  Promise.all(charactersUrls.map(getCharacterName))
+    .then(names => {
+      names.forEach(name => console.log(name));
     })
     .catch(error => {
-      console.error(error);
+      throw error;
     });
 });
